@@ -159,9 +159,9 @@ data_merged.columns = [
     "gyr_x",
     "gyr_y",
     "gyr_z",
+    "participant", # bug at previous video, here is correct column sequence
     "label",
     "category",
-    "participant",
     "set",
 ]
 
@@ -189,6 +189,7 @@ data_merged[:100].resample(rule="200ms").mean()
 
 data_merged.columns # display all column in this dataset
 
+# define sampling table
 sampling = {
     "acc_x":"mean",
     "acc_y":"mean",
@@ -196,9 +197,9 @@ sampling = {
     "gyr_x":"mean",
     "gyr_y":"mean",
     "gyr_z":"mean", # 
+    "participant":"last",
     "label":"last",
     "category":"last",
-    "participant":"last",
     "set":"last"    # within 200ms, get the last timestamp
 }
 
